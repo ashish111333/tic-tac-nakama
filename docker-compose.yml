@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: ttt-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: nakama
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: localdb
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "root", "-d", "nakama"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  nakama:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ttt-nakama
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    entrypoint:
+      - /bin/sh
+      - -ecx
+      - |
+        /nakama/nakama migrate up --config /nakama/data/local.yml --database.address root:localdb@postgres:5432/nakama?sslmode=disable
+        exec /nakama/nakama --config /nakama/data/local.yml --database.address root:localdb@postgres:5432/nakama?sslmode=disable
+    ports:
+      - "7349:7349"
+      - "7350:7350"
+      - "7351:7351"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7350/"]
+      interval: 10s
+      timeout: 5s
+      retries: 10

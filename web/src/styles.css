@@ -1,0 +1,141 @@
+:root {
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: #132a13;
+  background: radial-gradient(circle at top left, #ecf39e, #90a955 45%, #31572c 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #fff;
+  letter-spacing: 0.4px;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(19, 42, 19, 0.2);
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+}
+
+.grid.four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #90a955;
+}
+
+button {
+  cursor: pointer;
+  background: #4f772d;
+  color: #fff;
+  border: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background: #9fb58a;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rooms {
+  display: grid;
+  gap: 8px;
+}
+
+.room-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 8px;
+  align-items: center;
+  background: #f5f9ee;
+  border: 1px solid #d8e4c2;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 88px));
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.cell {
+  width: 88px;
+  height: 88px;
+  font-size: 28px;
+  font-weight: 700;
+  background: #ecf39e;
+  color: #132a13;
+  border-radius: 12px;
+}
+
+.error {
+  color: #8a1c1c;
+}
+
+.logs {
+  max-height: 200px;
+  overflow: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  background: #0f1b0a;
+  color: #d4f5b0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+@media (max-width: 760px) {
+  .grid.four,
+  .grid.three {
+    grid-template-columns: 1fr;
+  }
+
+  .room-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
