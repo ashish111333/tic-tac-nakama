@@ -2,6 +2,11 @@
 
 Server-authoritative multiplayer Tic-Tac-Toe backend built as a Nakama Go runtime module, with a local React test client.
 
+## Deployed Endpoints
+
+- Web UI: `http://136.119.253.104/`
+- Nakama API/WebSocket: `http://136.119.253.104:7350`
+
 ## Scope
 
 Implemented:
@@ -104,10 +109,10 @@ UI supports create/list/join/quick-match, gameplay, and optional bot opponent.
 
 1. Open the deployed web UI URL.
 2. In Connection panel, set:
-   - Host: deployed backend host/IP
+   - Host: `136.119.253.104`
    - Port: `7350`
-   - Server key: configured server key
-   - SSL: off for HTTP deployment, on for HTTPS/WSS deployment
+   - Server key: `supersecrettestkey`
+   - SSL: off
 3. Click `Connect`.
 4. Click `Quick Match`.
 5. Verify board state appears and moves are accepted only on your turn.
