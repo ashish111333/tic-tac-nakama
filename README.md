@@ -52,6 +52,17 @@ Endpoints:
 
 ## Local Run (Web Test UI)
 
+Containerized web UI (recommended on VM):
+
+```bash
+docker compose build web
+docker compose up -d web
+```
+
+Open `http://<server-ip>/`
+
+Non-containerized web UI:
+
 ```bash
 cd web
 npm install
@@ -173,4 +184,3 @@ Go plugins in Nakama require exact dependency compatibility with the Nakama bina
 This repo is pinned for Nakama `3.22.0` compatibility:
 - `github.com/heroiclabs/nakama-common v1.32.0`
 - `google.golang.org/protobuf v1.34.1`
-

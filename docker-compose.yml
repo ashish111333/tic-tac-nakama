@@ -37,3 +37,15 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: ttt-web
+    restart: unless-stopped
+    depends_on:
+      nakama:
+        condition: service_started
+    ports:
+      - "80:80"

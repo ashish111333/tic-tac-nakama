@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as nakamajs from "@heroiclabs/nakama-js";
 
-const DEFAULT_HOST = "127.0.0.1";
+const DEFAULT_HOST = window.location.hostname || "127.0.0.1";
 const DEFAULT_PORT = "7350";
 const DEFAULT_SERVER_KEY = "supersecrettestkey";
 const MOVE_OPCODE = 1;
