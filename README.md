@@ -77,6 +77,44 @@ Open `http://localhost:5173` and connect with:
 
 UI supports create/list/join/quick-match, gameplay, and optional bot opponent.
 
+## How To Play Multiplayer
+
+### Two real players
+
+1. Open the web app in two separate browsers/devices.
+2. In both clients, connect to the same Nakama endpoint (host, port `7350`, server key, SSL setting).
+3. Player A clicks `Create Room` (or `Quick Match`).
+4. Player B clicks `Quick Match` (or `List Rooms` then `Join`).
+5. Both players play turns on the same board; server enforces move validity and turn order.
+
+### Solo testing with bot
+
+1. Connect one client.
+2. Click `Quick Match` (or `Create Room`).
+3. Enable `Enable Bot Opponent`.
+4. Play normally; bot auto-joins as second player and plays on its turns.
+
+### Timed mode
+
+1. Set mode to `Timed`.
+2. Start match via `Quick Match` or `Create Room`.
+3. If current player does not move before `move_deadline_unix`, server auto-forfeits that player.
+
+## How Evaluator Can Test
+
+1. Open the deployed web UI URL.
+2. In Connection panel, set:
+   - Host: deployed backend host/IP
+   - Port: `7350`
+   - Server key: configured server key
+   - SSL: off for HTTP deployment, on for HTTPS/WSS deployment
+3. Click `Connect`.
+4. Click `Quick Match`.
+5. Verify board state appears and moves are accepted only on your turn.
+6. Enable `Enable Bot Opponent` and verify bot joins and responds with moves.
+7. Switch mode to `Timed`, start a new match, wait out one turn, verify timeout forfeit.
+8. Optional: call `get_player_stats` / `get_leaderboard` and verify updates after game end.
+
 ## RPC Contract
 
 ### `create_room`
